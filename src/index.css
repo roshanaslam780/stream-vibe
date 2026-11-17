@@ -1,0 +1,242 @@
+/* FONT IMPORTS */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+/* TAILWIND IMPORT */
+@import "tailwindcss";
+/* THEME SETTINGS */
+@theme {
+  /* Red / Brand Shades (utility: bg-brand-45, text-brand-50, etc.) */
+  --color-brand-45: #e50000;
+  --color-brand-50: #ff0000;
+  --color-brand-55: #ff1919;
+  --color-brand-60: #ff3333;
+  --color-brand-80: #ff9999;
+  --color-brand-90: #ffcccc;
+  --color-brand-95: #ffe5e5;
+  --color-brand-99: #fffafa;
+
+  /* Black / Dark Shades (utility: bg-dark-06, text-dark-10, etc.) */
+  --color-dark-06: #0f0f0f;
+  --color-dark-08: #141414;
+  --color-dark-10: #1a1a1a;
+  --color-dark-12: #1f1f1f;
+  --color-dark-15: #262626;
+  --color-dark-20: #333333;
+  --color-dark-25: #404040;
+  --color-dark-30: #4c4c4c;
+
+  /* Grey / Neutral Shades (utility: bg-neutral-60, text-neutral-90, etc.) */
+  --color-neutral-60: #999999;
+  --color-neutral-65: #a6a6a6;
+  --color-neutral-70: #b3b3b3;
+  --color-neutral-75: #bfbfbf;
+  --color-neutral-90: #e4e4e7;
+  --color-neutral-95: #f1f1f3;
+  --color-neutral-97: #f7f7f8;
+  --color-neutral-99: #fcfcfd;
+
+  /* TYPO */
+  --font-default: "Manrope", Arial, Helvetica, sans-serif;
+  /* CUSTOM TRANSITIONS */
+  --transition-1: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  --transition-2: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  /* OTHER */
+  --radius-base: 10px;
+  --breakpoint-xs: 420px;
+}
+
+@layer components {
+  .card {
+    @apply p-5 lg:p-6 2xl:p-7.5 bg-dark-06 border border-dark-15 rounded-base lg:rounded-xl;
+  }
+  .navLink {
+    @apply block text-white font-default text-sm font-medium px-5 2xl:px-6 py-3 2xl:py-4 rounded-lg bg-transparent [.active]:bg-dark-10;
+  }
+  .flex-center {
+    @apply inline-flex items-center justify-center;
+  }
+  .fluid-img {
+    @apply block w-full max-w-full h-auto;
+  }
+  .cover-img {
+    @apply block w-full h-full object-cover object-center;
+  }
+  .cover-image {
+    @apply w-full h-full object-cover object-center;
+  }
+  .typo {
+    @apply font-default font-medium text-white leading-normal;
+  }
+  .body-text {
+    @apply font-default font-normal text-neutral-60 leading-normal text-sm lg:text-base 2xl:text-lg;
+  }
+  [type="button"] {
+    @apply cursor-pointer;
+  }
+  .swiper-container {
+    @apply block w-full max-w-full overflow-hidden relative m-0 p-0;
+  }
+  .custom-pagination {
+    @apply [--swiper-pagination-color:var(--color-brand-45)] block w-32! sm:w-20! relative! shrink-0 rounded-3xl overflow-hidden;
+  }
+  .custom-bullet {
+    @apply h-1 w-4 bg-white/25 rounded-md [.active]:bg-brand-45 [.active]:w-6 cursor-pointer transition-all duration-250 ease-(--transition-1);
+  }
+}
+
+/* Keep scrolling discreet and consistent throughout the app. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dark-30) var(--color-dark-08);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-dark-08);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-dark-30);
+  border: 1px solid var(--color-dark-08);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-60);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-default);
+    background-color: var(--color-dark-08);
+    color: white;
+    line-height: var(--leading-normal);
+    min-width: 20rem;
+  }
+  header {
+    position: relative;
+    z-index: 99;
+  }
+  aside {
+    position: relative;
+    z-index: 100;
+  }
+  footer {
+    position: relative;
+    z-index: 98;
+  }
+  main {
+    position: relative;
+    z-index: 97;
+    max-width: 100%;
+  }
+  .rounded-inherit {
+    border-radius: inherit;
+  }
+  .gap-inherit {
+    gap: inherit;
+  }
+  .min-h-inherit {
+    min-height: inherit;
+  }
+  .rs-container {
+    width: 100%;
+    padding-inline: 16px;
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .rs-container {
+      max-width: 1280px;
+      padding-inline: 24px;
+    }
+  }
+
+  /* Large screens */
+  @media (min-width: 1440px) {
+    .rs-container {
+      max-width: 1600px;
+      padding-inline: 32px;
+    }
+  }
+}
+
+.hover-underline {
+  --color-hover: currentColor;
+  --size-hover: 1px;
+  z-index: 1;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  line-height: 1.5;
+  padding-bottom: var(--size-hover);
+  cursor: pointer;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    height: var(--size-hover);
+    width: 0;
+    transition: all 250ms var(--transition-1);
+    background-color: var(--color-hover);
+  }
+  &:hover::after {
+    width: 100%;
+    right: auto;
+    left: 0;
+  }
+}
+
+rs-marquee-block {
+  animation-duration: var(--duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+rs-marquee[pause-on-hover="true"]:hover rs-marquee-block {
+  animation-play-state: paused;
+}
+
+rs-marquee[direction="rtl"] rs-marquee-block {
+  animation-name: rightToLeft;
+}
+rs-marquee[direction="ltr"] rs-marquee-block {
+  animation-name: leftToRight;
+}
+
+@keyframes rightToLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes leftToRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+rs-marquee::part(container) {
+  overflow: hidden !important;
+}
+
+.text-size-inherit {
+  font-size: inherit;
+}
+
+.swiper-slide {
+  transition-property: opacity, transform !important;
+}
