@@ -12,6 +12,8 @@ import PrivacyPolicy from "@/pages/utility/PrivacyPolicy";
 import CookiePolicy from "@/pages/utility/CookiePolicy";
 import MoviesDiscover from "@/pages/movies/MoviesDiscover";
 import TvDiscover from "@/pages/shows/TvDiscover";
+import Person from "@/pages/person/Person";
+import PersonDetails from "@/pages/details/person/PersonDetails";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +28,8 @@ const AppRoutes = () => {
         <Route path="/tv/:id" element={<TvDetails />} />
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/person" element={<Person />} />
+        <Route path="/person/:id" element={<PersonDetails />} />
 
         {/* OTHER */}
         <Route path="/terms-of-use" element={<TermsOfUse />} />

@@ -17,7 +17,7 @@ const CardImage = ({ imagePath, imageTitle, className = "", to = "" }) => {
         alt={imageTitle ?? "N/A"}
         className="cover-image"
         loading="eager"
-        onError={() => handleImageError()}
+        onError={handleImageError}
       />
     </Link>
   );

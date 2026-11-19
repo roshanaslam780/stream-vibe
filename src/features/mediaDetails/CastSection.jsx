@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router";
 import "swiper/css";
 import SwiperControls from "@/components/ui/SwiperControls";
 import { getTmdbImageUrl } from "@/utils/tmdbImage";
@@ -32,31 +33,42 @@ const CastSection = ({ cast = [], mediaType = "movie", className = "" }) => {
               1440: { slidesPerView: 8 },
             }}
           >
-            {cast.slice(0, 20).map((person) => (
-              <SwiperSlide key={person.cast_id ?? `${person.id}-${person.order}`}>
-                <div className="overflow-hidden rounded-lg bg-dark-08">
-                  <div className="aspect-square">
-                    {person.profile_path ? (
-                      <img
-                        src={getTmdbImageUrl(person.profile_path, "w185")}
-                        alt={person.name}
-                        className="cover-img"
-                        loading="lazy"
-                        onError={handleImageError}
-                      />
-                    ) : (
-                      <div className="size-full flex-center text-neutral-60">
-                        <Icon icon="lucide:user-round" className="size-9" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-2.5">
-                    <p className="typo line-clamp-1 text-xs font-semibold">{person.name}</p>
-                    <p className="body-text line-clamp-1 text-xs">{getCharacter(person)}</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
+            {cast.slice(0, 20).map((person) => {
+              const profilePath = person.id
+                ? `/person/${person.id}?name=${encodeURIComponent(person.name || "")}`
+                : null;
+              const ProfileLink = profilePath ? Link : "div";
+
+              return (
+                <SwiperSlide key={person.cast_id ?? `${person.id}-${person.order}`}>
+                  <ProfileLink
+                    {...(profilePath ? { to: profilePath } : {})}
+                    className="block overflow-hidden rounded-lg bg-dark-08 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-brand-45"
+                    aria-label={profilePath ? `View ${person.name || "cast member"} profile` : undefined}
+                  >
+                    <div className="aspect-square">
+                      {person.profile_path ? (
+                        <img
+                          src={getTmdbImageUrl(person.profile_path, "w185")}
+                          alt={person.name}
+                          className="cover-img"
+                          loading="lazy"
+                          onError={handleImageError}
+                        />
+                      ) : (
+                        <div className="size-full flex-center text-neutral-60">
+                          <Icon icon="lucide:user-round" className="size-9" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-2.5">
+                      <p className="typo line-clamp-1 text-xs font-semibold">{person.name}</p>
+                      <p className="body-text line-clamp-1 text-xs">{getCharacter(person)}</p>
+                    </div>
+                  </ProfileLink>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       ) : (

@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { Link } from "react-router";
 import RatingStars from "@/components/ui/RatingStars";
 import { getTmdbImageUrl } from "@/utils/tmdbImage";
 import { handleImageError } from "@/utils/onImageError";
@@ -16,28 +17,41 @@ const DetailGroup = ({ title, icon, children }) => (
 
 const PersonCredit = ({ title, person }) => {
   const name = typeof person === "string" ? person : person?.name;
+  const profilePath = person?.id && name
+    ? `/person/${person.id}?name=${encodeURIComponent(name)}`
+    : null;
+  const creditCard = (
+    <>
+      <div className="size-12 shrink-0 overflow-hidden rounded-md bg-dark-15">
+        {person?.profile_path ? (
+          <img
+            src={getTmdbImageUrl(person.profile_path, "w185")}
+            alt={name}
+            className="cover-img"
+            loading="lazy"
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="size-full flex-center text-neutral-60">
+            <Icon icon="lucide:user-round" />
+          </div>
+        )}
+      </div>
+      <p className="typo min-w-0 font-medium [overflow-wrap:anywhere]">{name}</p>
+    </>
+  );
+  const creditCardClassName = "flex items-center gap-3 rounded-lg border border-dark-15 bg-dark-08 p-2.5 transition-colors hover:border-dark-25 focus-visible:outline-2 focus-visible:outline-brand-45";
 
   return (
     <DetailGroup title={title}>
       {name ? (
-        <div className="flex items-center gap-3 rounded-lg border border-dark-15 bg-dark-08 p-2.5">
-          <div className="size-12 shrink-0 overflow-hidden rounded-md bg-dark-15">
-            {person?.profile_path ? (
-              <img
-                src={getTmdbImageUrl(person.profile_path, "w185")}
-                alt={name}
-                className="cover-img"
-                loading="lazy"
-                onError={handleImageError}
-              />
-            ) : (
-              <div className="size-full flex-center text-neutral-60">
-                <Icon icon="lucide:user-round" />
-              </div>
-            )}
-          </div>
-          <p className="typo min-w-0 font-medium [overflow-wrap:anywhere]">{name}</p>
-        </div>
+        profilePath ? (
+          <Link to={profilePath} aria-label={`View ${name} profile`} className={creditCardClassName}>
+            {creditCard}
+          </Link>
+        ) : (
+          <div className={creditCardClassName}>{creditCard}</div>
+        )
       ) : <p className="body-text">N/A</p>}
     </DetailGroup>
   );
