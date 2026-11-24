@@ -19,7 +19,7 @@ const Breadcrumbs = ({ items }) => (
             {item.to && !isCurrent ? (
               <Link
                 to={item.to}
-                className="text-neutral-60 transition-colors hover:text-white"
+                className="text-neutral-60 transition-colors hover:text-white hover:underline"
               >
                 {item.label}
               </Link>

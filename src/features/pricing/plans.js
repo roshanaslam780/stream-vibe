@@ -1,3 +1,39 @@
+const comparisonFeatures = {
+  basic: {
+    content: "Access to a wide selection of movies and shows, including some new releases.",
+    devices: "Watch on one device simultaneously",
+    freeTrial: "7 Days",
+    cancelAnytime: "Yes",
+    hdr: "No",
+    dolbyAtmos: "No",
+    adFree: "No",
+    offlineViewing: "No",
+    familySharing: "No",
+  },
+  standard: {
+    content: "Access to a wider selection of movies and shows, including most new releases and exclusive content",
+    devices: "Watch on Two device simultaneously",
+    freeTrial: "7 Days",
+    cancelAnytime: "Yes",
+    hdr: "Yes",
+    dolbyAtmos: "Yes",
+    adFree: "Yes",
+    offlineViewing: "Yes, for select titles.",
+    familySharing: "Yes, up to 5 family members.",
+  },
+  premium: {
+    content: "Access to a widest selection of movies and shows, including all new releases and Offline Viewing",
+    devices: "Watch on Four device simultaneously",
+    freeTrial: "7 Days",
+    cancelAnytime: "Yes",
+    hdr: "Yes",
+    dolbyAtmos: "Yes",
+    adFree: "Yes",
+    offlineViewing: "Yes, for all titles.",
+    familySharing: "Yes, up to 6 family members.",
+  },
+};
+
 const pricingPlans = [
   {
     billingCycle: "monthly",
@@ -11,6 +47,7 @@ const pricingPlans = [
         period: "month",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        features: comparisonFeatures.basic,
       },
       {
         id: "standard-monthly",
@@ -20,6 +57,8 @@ const pricingPlans = [
         period: "month",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        popular: true,
+        features: comparisonFeatures.standard,
       },
       {
         id: "premium-monthly",
@@ -29,6 +68,7 @@ const pricingPlans = [
         period: "month",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        features: comparisonFeatures.premium,
       },
     ],
   },
@@ -44,6 +84,7 @@ const pricingPlans = [
         period: "year",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        features: comparisonFeatures.basic,
       },
       {
         id: "standard-yearly",
@@ -53,6 +94,8 @@ const pricingPlans = [
         period: "year",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        popular: true,
+        features: comparisonFeatures.standard,
       },
       {
         id: "premium-yearly",
@@ -62,6 +105,7 @@ const pricingPlans = [
         period: "year",
         freeTrialText: "Start Free Trial",
         choosePlanText: "Choose Plan",
+        features: comparisonFeatures.premium,
       },
     ],
   },

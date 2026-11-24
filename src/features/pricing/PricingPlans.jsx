@@ -4,8 +4,10 @@ import Button from "@/components/ui/button/Button";
 import pricingPlans from "./plans";
 import PricingCard from "./PricingCard";
 
-const PricingPlans = () => {
-  const [billingPeriod, setBillingPeriod] = useState("monthly");
+const PricingPlans = ({ billingPeriod: controlledBillingPeriod, onBillingPeriodChange }) => {
+  const [localBillingPeriod, setLocalBillingPeriod] = useState("monthly");
+  const billingPeriod = controlledBillingPeriod ?? localBillingPeriod;
+  const setBillingPeriod = onBillingPeriodChange ?? setLocalBillingPeriod;
   const selectedPlans = pricingPlans.find(
     (item) => item.billingCycle === billingPeriod,
   );

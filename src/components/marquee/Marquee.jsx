@@ -9,6 +9,7 @@ const Marquee = ({
   pauseOnHover = false,
   repeater = Math.ceil(2),
   aspectRatio,
+  size = "md",
   pageNo,
 }) => {
   const { data: movies, error, loading } = useApi(getPopularMovies, [pageNo]);
@@ -31,7 +32,12 @@ const Marquee = ({
       >
         {Array.from({ length: repeater }, (_, idx) => {
           return (
-            <MarqueeBlock key={idx} movies={movies} aspectRatio={aspectRatio} />
+            <MarqueeBlock
+              key={idx}
+              movies={movies}
+              aspectRatio={aspectRatio}
+              size={size}
+            />
           );
         })}
       </rs-marquee>

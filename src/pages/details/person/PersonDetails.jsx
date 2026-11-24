@@ -69,9 +69,9 @@ const PersonDetails = () => {
         <PersonDetailsSkeleton />
       ) : person ? (
         <div className="grid min-w-0 items-start gap-5 lg:grid-cols-[280px_minmax(0,1fr)] xl:gap-8 2xl:grid-cols-[340px_minmax(0,1fr)]">
-          <aside className="flex min-w-0 flex-col gap-5">
-            <div className="overflow-hidden rounded-xl border border-dark-15 bg-dark-10 p-3 sm:p-4">
-              <div className="aspect-[2/3] max-h-[520px] overflow-hidden rounded-lg bg-dark-06">
+          <aside className="flex min-w-0 flex-col gap-5 sm:flex-row lg:flex-col">
+            <div className="overflow-hidden rounded-xl border border-dark-15 bg-dark-10 p-3 sm:p-4 max-lg:h-fit max-sm:w-fit">
+              <div className="aspect-2/3 max-h-130 overflow-hidden rounded-lg bg-dark-06">
                 {person.profile_path ? (
                   <img
                     src={getTmdbImageUrl(person.profile_path, "h632")}

@@ -1,6 +1,6 @@
 import Marquee from "./Marquee";
 
-const MovieMarquee = ({ marqueeCount = 4, aspectRatio = "portrait" }) => {
+const MovieMarquee = ({ marqueeCount = 4, aspectRatio = "portrait", size = "md" }) => {
   return (
     <div className="flex flex-col w-full max-w-full gap-y-2.5 2xl:gap-y-5">
       {Array.from({ length: marqueeCount }, (_, idx) => {
@@ -12,6 +12,7 @@ const MovieMarquee = ({ marqueeCount = 4, aspectRatio = "portrait" }) => {
             direction={dir}
             key={idx}
             aspectRatio={aspectRatio}
+            size={size}
           />
         );
       })}
