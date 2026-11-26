@@ -11,6 +11,14 @@ const getPopularShows = async (page = 1, props = {}, signal) => {
   return tv?.results ?? [];
 };
 
+const searchTv = async (query, page = 1, signal) => {
+  return TMDBFetch("/search/tv", {
+    language: "en-US",
+    query,
+    page,
+  }, signal);
+};
+
 
 const getTvGenres = async (props = {}, signal) => {
   const tv = await TMDBFetch("/genre/tv/list", {
@@ -74,6 +82,7 @@ const getNewlyReleasedTv = async (page = 1, props = {}, signal) => {
 
 export {
   getPopularShows,
+  searchTv,
   getTvGenres,
   getTvByGenreId,
   getTrendingTv,

@@ -14,6 +14,15 @@ const getPopularMovies = async (
   return movies?.results ?? [];
 };
 
+const searchMovies = async (query, page = 1, signal) => {
+  return TMDBFetch("/search/movie", {
+    language: "en-US",
+    query,
+    page,
+    include_adult: false,
+  }, signal);
+};
+
 
 const getMoviesGenres = async (props = {}, signal) => {
   const genres = await TMDBFetch("/genre/movie/list", {
@@ -102,6 +111,7 @@ const getNewlyReleasedMovies = async (
 
 export {
   getPopularMovies,
+  searchMovies,
   getMoviesGenres,
   getMoviesByGenreId,
   getTrendingMovies,

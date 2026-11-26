@@ -14,6 +14,8 @@ import MoviesDiscover from "@/pages/movies/MoviesDiscover";
 import TvDiscover from "@/pages/shows/TvDiscover";
 import Person from "@/pages/person/Person";
 import PersonDetails from "@/pages/details/person/PersonDetails";
+import Search from "@/pages/search/Search";
+import AdvancedSearch from "@/pages/search/AdvancedSearch";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +24,8 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/discover" element={<Discover />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/advanced-search" element={<AdvancedSearch />} />
         <Route path="/discover/movie/:id" element={<MoviesDiscover />} />
         <Route path="/discover/tv/:id" element={<TvDiscover />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
