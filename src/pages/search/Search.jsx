@@ -109,7 +109,7 @@ const ResultGroup = ({ title, mediaType, result, loading, error, page, onPageCha
         <button type="button" onClick={onRetry} className="mt-2 text-xs font-semibold text-white underline underline-offset-4">Try again</button>
       </div>
     ) : loading && !result ? (
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{[1, 2, 3].map((item) => <div key={item} className="h-40 animate-pulse rounded-xl border border-dark-15 bg-dark-10" />)}</div>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{[1, 2, 3, 4, 5, 6].map((item) => <ResultCardSkeleton key={item} />)}</div>
     ) : result?.results?.length ? (
       <>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{result.results.map((item) => <SearchMediaCard key={item.id} item={item} mediaType={mediaType} />)}</div>
@@ -120,5 +120,7 @@ const ResultGroup = ({ title, mediaType, result, loading, error, page, onPageCha
     )}
   </section>
 );
+
+const ResultCardSkeleton = () => <div className="flex animate-pulse gap-4 rounded-xl border border-dark-15 bg-dark-10 p-3 sm:p-4"><div className="aspect-[2/3] w-24 shrink-0 rounded-lg bg-dark-06 sm:w-32" /><div className="flex flex-1 flex-col gap-3 py-2"><div className="h-4 w-3/4 rounded bg-dark-06" /><div className="h-3 w-1/3 rounded bg-dark-06" /><div className="mt-2 space-y-2"><div className="h-3 w-full rounded bg-dark-06" /><div className="h-3 w-11/12 rounded bg-dark-06" /><div className="h-3 w-2/3 rounded bg-dark-06" /></div><div className="mt-auto h-3 w-12 rounded bg-dark-06" /></div></div>;
 
 export default Search;

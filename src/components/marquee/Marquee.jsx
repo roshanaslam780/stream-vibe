@@ -44,7 +44,7 @@ const Marquee = ({
   if (movies) {
     return (
       <rs-marquee
-        className={`flex items-stretch justify-start max-w-full overflow-hidden`}
+        className="flex w-full min-w-0 max-w-full items-stretch justify-start overflow-x-clip"
         direction={direction}
         pause-on-hover={pauseOnHover}
         style={{ "--duration": `${speed}s` }}

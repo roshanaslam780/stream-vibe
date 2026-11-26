@@ -21,8 +21,8 @@ const Support = () => (
             </p>
           </div>
 
-          <div className="relative aspect-square overflow-hidden rounded-xl border border-dark-15 bg-dark-06">
-            <div className="absolute inset-0 flex items-center">
+          <div className="relative aspect-auto min-h-80 w-full min-w-0 overflow-x-clip overflow-y-hidden rounded-xl border border-dark-15 bg-dark-06 sm:aspect-square sm:min-h-0">
+            <div className="absolute inset-0 flex min-w-0 items-center overflow-x-clip">
               <MovieMarquee marqueeCount={4} aspectRatio="portrait" size="xs" />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-dark-06/20 via-transparent to-dark-06/35" />

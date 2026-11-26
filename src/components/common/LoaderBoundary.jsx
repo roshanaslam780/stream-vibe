@@ -14,6 +14,7 @@ const LoaderBoundary = ({ children }) => {
 
   useEffect(() => {
     setRouteLoading(true);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     const routeTimer = window.setTimeout(() => setRouteLoading(false), 350);
     return () => window.clearTimeout(routeTimer);
   }, [pathname, search]);

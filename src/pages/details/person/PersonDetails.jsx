@@ -20,13 +20,13 @@ const genderLabels = {
 const PersonDetailsSkeleton = () => (
   <div className="grid animate-pulse gap-5 lg:grid-cols-[280px_minmax(0,1fr)] xl:gap-8">
     <div className="space-y-5">
-      <div className="aspect-[2/3] rounded-xl bg-dark-10" />
+      <div className="aspect-2/3 rounded-xl bg-dark-10" />
       <div className="h-56 rounded-xl bg-dark-10" />
     </div>
     <div className="space-y-5">
       <div className="h-32 rounded-xl bg-dark-10" />
       <div className="h-56 rounded-xl bg-dark-10" />
-      <div className="h-[36rem] rounded-xl bg-dark-10" />
+      <div className="h-144 rounded-xl bg-dark-10" />
     </div>
   </div>
 );

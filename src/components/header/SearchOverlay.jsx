@@ -122,7 +122,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
           <div className="mt-7 grid gap-8">
             <section>
               <div className="mb-3 flex items-center justify-between"><h2 className="typo text-base font-semibold">Explore by genre</h2>{panelLoading && <span className="text-xs text-neutral-60">Loading…</span>}</div>
-              {panelError ? <div><p className="text-sm text-brand-80">{panelError}</p><button type="button" onClick={() => setPanelRetry((retry) => retry + 1)} className="mt-2 text-xs font-semibold text-white underline underline-offset-4">Try again</button></div> : <div className="grid gap-4 sm:grid-cols-2">
+              {panelError ? <div><p className="text-sm text-brand-80">{panelError}</p><button type="button" onClick={() => setPanelRetry((retry) => retry + 1)} className="mt-2 text-xs font-semibold text-white underline underline-offset-4">Try again</button></div> : panelLoading && !genres.movies.length && !genres.tv.length ? <GenreSkeleton /> : <div className="grid gap-4 sm:grid-cols-2">
                 {[{ type: "movie", label: "Movies", items: genres.movies }, { type: "tv", label: "TV Shows", items: genres.tv }].map((group) => (
                   <div key={group.type}><h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-neutral-60">{group.label}</h3><div className="flex flex-wrap gap-2">{group.items.map((genre) => <Link key={genre.id} to={`/discover/${group.type}/${genre.id}`} onClick={onClose} className="rounded-full border border-dark-20 bg-dark-10 px-3 py-1.5 text-xs text-neutral-70 transition-colors hover:border-brand-45 hover:text-white">{genre.name}</Link>)}</div></div>
                 ))}
@@ -142,8 +142,10 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 const PopularRow = ({ title, items, mediaType, loading, onClose }) => (
   <section className="min-w-0">
     <div className="mb-3 flex items-center justify-between"><h2 className="typo text-base font-semibold">{title}</h2><Link to={mediaType === "movie" ? "/discover" : "/discover"} onClick={onClose} className="text-xs text-neutral-60 hover:text-white">Discover</Link></div>
-    {loading && !items.length ? <div className="flex gap-3">{[1, 2, 3].map((i) => <div key={i} className="aspect-[2/3] w-24 shrink-0 animate-pulse rounded-lg bg-dark-10" />)}</div> : items.length ? <div className="flex gap-3 overflow-x-auto pb-2">{items.slice(0, 6).map((item) => <SearchMediaCard key={item.id} item={item} mediaType={mediaType} compact />)}</div> : <p className="text-sm text-neutral-60">Popular titles are unavailable right now.</p>}
+    {loading && !items.length ? <div className="flex gap-3">{[1, 2, 3, 4, 5, 6].map((i) => <div key={i} className="w-28 shrink-0 animate-pulse sm:w-32"><div className="aspect-[2/3] rounded-lg bg-dark-10" /><div className="mt-2 h-3 w-4/5 rounded bg-dark-10" /></div>)}</div> : items.length ? <div className="flex gap-3 overflow-x-auto pb-2">{items.slice(0, 6).map((item) => <SearchMediaCard key={item.id} item={item} mediaType={mediaType} compact />)}</div> : <p className="text-sm text-neutral-60">Popular titles are unavailable right now.</p>}
   </section>
 );
+
+const GenreSkeleton = () => <div className="grid gap-4 sm:grid-cols-2">{[1, 2].map((group) => <div key={group}><div className="mb-3 h-3 w-20 animate-pulse rounded bg-dark-10" /><div className="flex flex-wrap gap-2">{[1, 2, 3, 4, 5, 6].map((item) => <div key={item} className="h-7 w-20 animate-pulse rounded-full bg-dark-10" />)}</div></div>)}</div>;
 
 export default SearchOverlay;
