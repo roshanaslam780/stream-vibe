@@ -49,9 +49,12 @@ const DiscoverSlide = ({ content, mediaType, contentSlice, type = "swiper" }) =>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-5">
-              <Button className="w-full sm:w-fit">
+              <Button
+                to={type === "swiper" ? `/${isMovie ? "movie" : "tv"}/${content.id}` : undefined}
+                className="w-full sm:w-fit"
+              >
                 <Icon icon="gravity-ui:play-fill" />
-                Plan Now
+                Play Now
               </Button>
               <div className="flex items-center gap-2 2xl:gap-2.5">
                 <IconButton variant="secondary">
