@@ -38,16 +38,16 @@ const SideMenu = ({ isOpen, onToggle }) => {
               <div className="flex flex-col gap-y-4">
                 <div className={HeadingStyles}>Home</div>
                 <div className="flex flex-col gap-2">
-                  <Link to="/#categories" className={LinkStyles}>
+                  <Link to="/#categories" onClick={onToggle} className={LinkStyles}>
                     Categories
                   </Link>
-                  <Link to="/#devices" className={LinkStyles}>
+                  <Link to="/#devices" onClick={onToggle} className={LinkStyles}>
                     Devices
                   </Link>
-                  <Link to="/#pricing" className={LinkStyles}>
+                  <Link to="/#pricing" onClick={onToggle} className={LinkStyles}>
                     Pricing
                   </Link>
-                  <Link to="/#faq" className={LinkStyles}>
+                  <Link to="/#faq" onClick={onToggle} className={LinkStyles}>
                     FAQ's
                   </Link>
                 </div>
@@ -55,16 +55,16 @@ const SideMenu = ({ isOpen, onToggle }) => {
               <div className="flex flex-col gap-y-4">
                 <div className={HeadingStyles}>Movies</div>
                 <div className="flex flex-col gap-2">
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#movies-genres" onClick={onToggle} className={LinkStyles}>
                     Genres
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#movies-trending" onClick={onToggle} className={LinkStyles}>
                     Trending
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#movies-new-releases" onClick={onToggle} className={LinkStyles}>
                     New Releases
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#movies-popular" onClick={onToggle} className={LinkStyles}>
                     Popular
                   </Link>
                 </div>
@@ -72,16 +72,16 @@ const SideMenu = ({ isOpen, onToggle }) => {
               <div className="flex flex-col gap-y-4">
                 <div className={HeadingStyles}>Shows</div>
                 <div className="flex flex-col gap-2">
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#shows-genres" onClick={onToggle} className={LinkStyles}>
                     Genres
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#shows-trending" onClick={onToggle} className={LinkStyles}>
                     Trending
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#shows-new-releases" onClick={onToggle} className={LinkStyles}>
                     New Releases
                   </Link>
-                  <Link to="/discover" className={LinkStyles}>
+                  <Link to="/discover#shows-popular" onClick={onToggle} className={LinkStyles}>
                     Popular
                   </Link>
                 </div>
@@ -89,7 +89,7 @@ const SideMenu = ({ isOpen, onToggle }) => {
               <div className="flex flex-col gap-y-4">
                 <div className={HeadingStyles}>Support</div>
                 <div className="flex flex-col gap-2">
-                  <Link to="/support" className={LinkStyles}>
+                  <Link to="/support" onClick={onToggle} className={LinkStyles}>
                     Contact Us
                   </Link>
                 </div>
@@ -97,10 +97,10 @@ const SideMenu = ({ isOpen, onToggle }) => {
               <div className="flex flex-col gap-y-4">
                 <div className={HeadingStyles}>Subscription</div>
                 <div className="flex flex-col gap-2">
-                  <Link to="/#pricing" className={LinkStyles}>
+                  <Link to="/subscription#pricing" onClick={onToggle} className={LinkStyles}>
                     Plans
                   </Link>
-                  <Link to="/#pricing" className={LinkStyles}>
+                  <Link to="/subscription#comparison" onClick={onToggle} className={LinkStyles}>
                     Features
                   </Link>
                 </div>
@@ -111,15 +111,15 @@ const SideMenu = ({ isOpen, onToggle }) => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-y-4">
               <div className={HeadingStyles}>Connect With Us</div>
               <div className="flex items-center justify-start gap-x-4">
-                <IconButton variant="secondary">
+                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" className="flex size-10 items-center justify-center rounded-lg border border-dark-15 bg-dark-15 text-white hover:bg-dark-20">
                   <Icon icon="akar-icons:facebook-fill" />
-                </IconButton>
-                <IconButton variant="secondary">
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" className="flex size-10 items-center justify-center rounded-lg border border-dark-15 bg-dark-15 text-white hover:bg-dark-20">
                   <Icon icon="akar-icons:twitter-fill" />
-                </IconButton>
-                <IconButton variant="secondary">
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex size-10 items-center justify-center rounded-lg border border-dark-15 bg-dark-15 text-white hover:bg-dark-20">
                   <Icon icon="akar-icons:linkedin-box-fill" />
-                </IconButton>
+                </a>
               </div>
             </div>
           </div>

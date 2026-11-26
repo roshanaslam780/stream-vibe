@@ -8,7 +8,7 @@ const PlanComparison = ({ billingPeriod = "monthly" }) => {
     ?? pricingPlans[0];
 
   return (
-    <Section>
+    <Section id="comparison">
       <div className="mb-7 flex flex-col gap-2.5 md:mb-10">
         <h2 className="typo text-2xl font-bold lg:text-[28px] 2xl:text-[38px]">
           Compare our plans and find the right one for you

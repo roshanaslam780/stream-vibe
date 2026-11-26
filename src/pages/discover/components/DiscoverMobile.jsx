@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import Section from "@/layout/Section";
 import Button from "@/components/ui/button/Button";
 import DiscoverMovies from "./DiscoverMovies";
@@ -6,6 +7,13 @@ import DiscoverShows from "./DiscoverShows";
 
 const DiscoverMobile = () => {
   const [contentType, setContentType] = useState("movie");
+  const { hash } = useLocation();
+  useEffect(() => {
+    const isShows = hash.startsWith("#shows-");
+    setContentType(isShows ? "show" : "movie");
+    const targetHash = hash;
+    if (targetHash) window.setTimeout(() => document.querySelector(targetHash)?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+  }, [hash]);
   return (
     <Section>
       <div className="flex flex-col gap-y-12.5 w-full max-w-full">

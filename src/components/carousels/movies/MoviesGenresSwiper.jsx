@@ -47,7 +47,7 @@ const MoviesGenresSwiper = () => {
   }, [isMobile, swiperInstance]);
 
   return (
-    <div className="flex flex-col gap-y-10 md:gap-y-12.5 lg:gap-y-15 2xl:gap-y-20">
+    <div id="movies-genres" className="flex scroll-mt-24 flex-col gap-y-10 md:gap-y-12.5 lg:gap-y-15 2xl:gap-y-20">
       {/* Section Header */}
       <div className="flex items-center justify-between gap-5 flex-wrap md:flex-nowrap">
         <div className="flex flex-col gap-y-2.5 md:max-w-8/10">
